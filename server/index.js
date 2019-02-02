@@ -12,6 +12,7 @@ const {renderToString} = require('react-dom/server');
 //local files
 let {getHTML} = require('../public/index.html')
 let App = require('../client/app.jsx').default;
+let controller = require('./controller');
 
 
 //apply middleware and set default path
@@ -23,7 +24,22 @@ app.use(compression());
 //routes
 app.get('/',(req,res)=> res.send(getHTML(renderToString(<App/>))));
 
+app.get('/services',(req,res)=>{
+  let query = req.params.query || 0;
+  console.log('request:',query)
+  controller.getServices(query,(err,data)=>{
+    if(err) console.log(err)
+    else res.send(data)
+  })
+})
 
+app.get('/requests',(req,res)=>{
+  let query = req.params.query || null;
+  controller.getRequests(query,(err,data)=>{
+    if(err) console.log(err)
+    else res.send(data)
+  })
+})
 
 app.listen(8080, function () {
     console.log('listening on port 8080!');
