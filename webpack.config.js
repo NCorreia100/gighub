@@ -2,9 +2,9 @@
 var nodeExternals = require('webpack-node-externals');
 
 var path = require('path');
-var SRC_DIR = path.join(__dirname, 'client/src');
+var SRC_DIR = path.join(__dirname, 'client');
 var SERVER_DIR = path.join(__dirname, 'server');
-var DIST_DIR = path.join(__dirname, 'client/public');
+var DIST_DIR = path.join(__dirname, 'public');
 
 module.exports = [{ 
   mode: 'development',
