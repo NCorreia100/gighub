@@ -1,0 +1,71 @@
+CREATE DATABASE IF NOT EXISTS gighub;
+USE gighub;
+
+CREATE TABLE IF NOT EXISTS users(
+    USER_ID int(8)  AUTO_INCREMENT PRIMARY KEY,
+    USERNAME varchar(20) UNIQUE NOT NULL,
+    PASSWORD varchar(20) NOT NULL,
+    SIGNUP_DATE DATETIME,
+    PHONE  varchar(11),
+    EMAIL  varchar(20),    
+    PROVIDER_QTY   int(4),
+    RECEIVER_QTY   int(4),
+    RATING_PROVIDER DECIMAL(3,2),
+    RATING_RECEIVER DECIMAL(3,2),
+    LAST_LOGIN TIMESTAMP DEFAULT CURRENT_TIMESTAMP);
+
+CREATE TABLE IF NOT EXISTS services (
+    SERVICE_ID int(8) AUTO_INCREMENT PRIMARY KEY,
+    USER_ID  int(8),
+    NAME    varchar(20),
+    TYPE    varchar(20),
+    TAGS    varchar(50),
+    DESCRIPTION varchar(200),
+    AVAILABILITY varchar(300),
+    PRICING varchar(500),
+    LOCATION  varchar(10),
+    MAX_DISTANCE   int(10),
+    PAYMENT varchar(400),
+    MIN_DURATION  int(5),
+    FOREIGN KEY(USER_ID) 
+            REFERENCES users (USER_ID)
+    
+    
+);
+
+CREATE TABLE IF NOT EXISTS requests (
+    REQUEST_ID int(8) AUTO_INCREMENT PRIMARY KEY,  
+    USER_ID int(8),
+    NAME    varchar(20),
+    TYPE    varchar(20),
+    TAGS    varchar(50),
+    DESCRIPTION varchar(200),
+    DEADLINE   DATE,
+    DURATION   varchar (50),
+    LOCATION   varchar(10),
+    FREQUENCY  varchar(200),
+    REQUIREMENTS varchar(500),
+    PRICE_REQUESTED DECIMAL (8,2),    
+    DATE_ADDED TIMESTAMP DEFAULT CURRENT_TIMESTAMP,   
+      FOREIGN KEY(USER_ID) 
+        REFERENCES users (USER_ID)     
+);
+
+CREATE TABLE IF NOT EXISTS records (
+    RECORD_ID int(12) AUTO_INCREMENT PRIMARY KEY,  
+    DATE_ADDED TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    USER_REQUESTER int(8),
+    USER_PROVIDER int(8),
+    SERVICE_ID int(8) DEFAULT NULL,
+    REQUEST_ID int(8) DEFAULT NULL,
+    RATING_REQUESTER int(1),
+    RATING_PROVIDER int(1),
+      FOREIGN KEY(USER_REQUESTER) 
+        REFERENCES users (USER_ID), 
+      FOREIGN KEY(USER_PROVIDER) 
+        REFERENCES users (USER_ID), 
+     FOREIGN KEY(SERVICE_ID)
+         REFERENCES services (SERVICE_ID),
+     FOREIGN KEY(REQUEST_ID)
+         REFERENCES requests (REQUEST_ID)
+);
