@@ -11,7 +11,7 @@ module.exports = [{
   target: 'web', 
   entry: `${SRC_DIR}/app.jsx`,
   output: {
-    filename: 'bundle.js',
+    filename: 'client-bundle.js',
     path: DIST_DIR
   },
   module: {
@@ -28,31 +28,32 @@ module.exports = [{
       }
     ]
   }
-},
- {
-  mode: 'development',
-  target: 'node',
-  node: {
-    __dirname: false
-  },
-  externals: [nodeExternals()],
-  entry: `${SERVER_DIR}/index.js`,
-  output: {
-    filename: 'bundle-server.js',
-    path: DIST_DIR
-  },
-  module: {
-    rules: [
-      {
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          query: {
-            presets: ['@babel/preset-env','@babel/preset-react']            
-          }          
-        }
-      }
-    ]
-  }
+// },
+//  {
+//   mode: 'development',
+//   target: 'node',
+//   node: {
+//     __dirname: false
+//   },
+//   externals: [nodeExternals()],
+//   entry: `${SERVER_DIR}/index.js`,
+//   output: {
+//     filename: 'bundle-server.js',
+//     path: DIST_DIR
+//   },
+//   module: {
+//     rules: [
+//       {
+//         test: /\.(js|jsx)$/,
+//         exclude: /node_modules/,
+//         use: {
+//           loader: 'babel-loader',
+//           query: {
+//             presets: ['@babel/preset-env','@babel/preset-react'],
+//             plugins: ["@babel/transform-runtime"]                           
+//           }          
+//         }
+//       }
+//     ]
+//   }
 }];
