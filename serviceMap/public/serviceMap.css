@@ -1,0 +1,32 @@
+html,body,div{
+    display:block;
+    position:relative;
+    width: 100%;    
+   margin: auto;
+   height:auto;
+  }
+
+  #map-nav{
+      display:inline-flex;
+     
+  }
+  #most-common-container{
+      display:flex;
+      justify-content: space-around;
+  }
+  #map-outer-form{
+      top:35px;
+    width: 800px;
+    border: 2px solid lightgrey;
+    border-radius: 7%;
+  }
+  #map-pane{
+      padding:10px;
+      border:1px solid grey;
+      border-radius: 3%;
+  }
+  #most-common-container a{
+    color: rgb(95, 94, 94);
+    padding: 0 15px 0 15px;
+    text-decoration:underline;
+  }
