@@ -5,28 +5,70 @@ html,body,div{
    margin: auto;
    height:auto;
   }
-
-  #map-nav{
-      display:inline-flex;
-     
-  }
-  #most-common-container{
-      display:flex;
-      justify-content: space-around;
+  #map-root{      
+    width: 66vw;
+    height: 66vw;
   }
   #map-outer-form{
-      top:35px;
-    width: 800px;
-    border: 2px solid lightgrey;
-    border-radius: 7%;
+
+    top: 35px;
+    width: 66%;
+    border: 7px solid #f2dede;
+    border-radius: 10%;
+    height: 66%;
+    background-color: black
   }
+  #map-nav{
+    display: inline-flex;
+    left: 5%;
+    top: 26px;
+    width: 92%;
+    z-index: 2;
+    margin-bottom: 10px;
+  }
+  .search{
+    overflow: hidden;
+    width: 64%;
+    float: right;
+  }
+  #btn-search{
+      float:right;
+  }
+  #txt-search{
+      float:right;
+  }
+  #most-common-container{
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 4px;
+    padding-left: 0%;
+    color: white;
+    width: 70%;
+    float: left;
+  }
+  #most-common-container a{
+    color: #999;
+    padding: 0 1% 0 1%;
+    text-decoration:underline;
+    cursor:pointer;
+  }
+
   #map-pane{
       padding:10px;
       border:1px solid grey;
       border-radius: 3%;
   }
-  #most-common-container a{
-    color: rgb(95, 94, 94);
-    padding: 0 15px 0 15px;
-    text-decoration:underline;
+
+  #map-inner-container{
+    width: 90%;
+    height: 80%;
+    border: 3px solid lightgrey;
+    border-radius: 6%;
+    overflow: hidden;
+    top: 15px;
+    z-index: 1;
+  }
+  .center-marker{
+      width:20px;
+      height:auto;
   }

@@ -25,7 +25,17 @@ module.exports = [{
             presets: ['@babel/preset-env','@babel/preset-react']            
           }          
         }
-      }
+      },
+          {
+            test: /\.html$/,
+            exclude: /node_modules/,
+            loader: 'html-loader'
+        },
+        {
+           test: /\.(png|jpg)$/,
+           exclude: /node_modules/,
+           loader: 'url-loader?limit=8192' 
+          }
     ]
   }
 // },
