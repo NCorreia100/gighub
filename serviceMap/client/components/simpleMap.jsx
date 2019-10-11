@@ -11,18 +11,16 @@ const defaultProps = {
 class SimpleMap extends Component {
 
   render() {
-     
-    return (
-      // Important! Always set the container height explicitly     
-        <GoogleMapReact
+     let mapCenter = this.props.location;
+    return(<GoogleMapReact
           bootstrapURLKeys={{ key: GOOGLE_API_KEY }}
-          defaultCenter={defaultProps}
+          defaultCenter={mapCenter}
           defaultZoom={11}
         >
          <Marker
-            lat={defaultProps.lat}
-            lng={defaultProps.lng}
-            text="My Marker"
+            lat={mapCenter.lat}
+            lng={mapCenter.lng}
+            center={true}
           />
         </GoogleMapReact>     
     );
